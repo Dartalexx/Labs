@@ -1,6 +1,7 @@
 #pragma once
+#include <stdio.h>
 using namespace std;
-// определение класса комплексных чисел
+// Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГЄГ«Г Г±Г±Г  ГЄГ®Г¬ГЇГ«ГҐГЄГ±Г­Г»Гµ Г·ГЁГ±ГҐГ«
 class Complex {
 public:
     Complex()
@@ -8,7 +9,7 @@ public:
         i = 0;
         r = 0;
     }
-    Complex(int rl, int im)//конструктор с параметрами
+    Complex(int rl, int im)//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г± ГЇГ Г°Г Г¬ГҐГІГ°Г Г¬ГЁ
     {
         st = new char[10];
         r = rl;
@@ -16,7 +17,7 @@ public:
         for (int i1 = 0; i1 < 10; i1++)
             st[i1] ='0';
     }
-    Complex(const Complex& other)// Конструктор копирования
+    Complex(const Complex& other)// ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГї
     {
         st = new char[10];
         r = other.r;
@@ -24,19 +25,19 @@ public:
         for (int i1 = 0; i1 < 10; i1++)
             st[i1] = other.st[i1];
     }
-    void Add(Complex x, Complex y);  // Сложить комплексныые числа
-    void Sub(Complex x, Complex y);  // вычесть комплексные числа
-    void Multi(Complex x, Complex y); // умножение комплексных чисел
-    void Div(Complex x, Complex y); // Деление комплексных чис
-    char* toString(); //перевод в строку
+    void Add(Complex x, Complex y);  // Г‘Г«Г®Г¦ГЁГІГј ГЄГ®Г¬ГЇГ«ГҐГЄГ±Г­Г»Г»ГҐ Г·ГЁГ±Г«Г 
+    void Sub(Complex x, Complex y);  // ГўГ»Г·ГҐГ±ГІГј ГЄГ®Г¬ГЇГ«ГҐГЄГ±Г­Г»ГҐ Г·ГЁГ±Г«Г 
+    void Multi(Complex x, Complex y); // ГіГ¬Г­Г®Г¦ГҐГ­ГЁГҐ ГЄГ®Г¬ГЇГ«ГҐГЄГ±Г­Г»Гµ Г·ГЁГ±ГҐГ«
+    void Div(Complex x, Complex y); // Г„ГҐГ«ГҐГ­ГЁГҐ ГЄГ®Г¬ГЇГ«ГҐГЄГ±Г­Г»Гµ Г·ГЁГ±
+    char* toString(); //ГЇГҐГ°ГҐГўГ®Г¤ Гў Г±ГІГ°Г®ГЄГі
     int getr() { return r; }
     int geti() { return i; }
-    int getID() { c_id = c++;  return c_id; }//получение номера объекта класса
-    ~Complex(); //Деструктор
+    int getID() { c_id = c++;  return c_id; }//ГЇГ®Г«ГіГ·ГҐГ­ГЁГҐ Г­Г®Г¬ГҐГ°Г  Г®ГЎГєГҐГЄГІГ  ГЄГ«Г Г±Г±Г 
+    ~Complex(); //Г„ГҐГ±ГІГ°ГіГЄГІГ®Г°
 private:
-    int r;  // вещественная часть
-    int i;  // мнимая часть
-    char* st; //строковое представление
+    int r;  // ГўГҐГ№ГҐГ±ГІГўГҐГ­Г­Г Гї Г·Г Г±ГІГј
+    int i;  // Г¬Г­ГЁГ¬Г Гї Г·Г Г±ГІГј
+    char* st; //Г±ГІГ°Г®ГЄГ®ГўГ®ГҐ ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГҐГ­ГЁГҐ
     static int c;
     int c_id;
 };
