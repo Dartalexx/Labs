@@ -1,80 +1,37 @@
-#include "À‡·‡3.1.1.h";
+#include "√ã√†√°√†3.1.1.h";
 #include <iostream>
 Complex::~Complex()
 {
     delete[] st;
 }
-// ÏÂÚÓ‰ ÒÎÓÊÂÌËˇ
+// √¨√•√≤√Æ√§ √±√´√Æ√¶√•√≠√®√ø
 void Complex::Add(Complex op1, Complex op2) {
     r = op1.r + op2.r;
     i = op1.i + op2.i;
 }
-//ÏÂÚÓ‰ ‚˚˜ËÚ‡ÌËˇ
+//√¨√•√≤√Æ√§ √¢√ª√∑√®√≤√†√≠√®√ø
 void Complex::Sub(Complex op1, Complex op2) {
     r = op1.r - op2.r;
     i = op1.i - op2.i;
 }
-//ÏÂÚÓ‰ ÛÏÌÓÊÂÌËˇ
+//√¨√•√≤√Æ√§ √≥√¨√≠√Æ√¶√•√≠√®√ø
 void Complex::Multi(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r - op1.i * op2.i);
     i = (op1.i * op2.r + op1.r * op2.i);
 }
-//ÏÂÚÓ‰ ‰ÂÎÂÌËˇ
+//√¨√•√≤√Æ√§ √§√•√´√•√≠√®√ø
 void Complex::Div(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r + op1.i * op2.i) / (op2.r * op2.r + op2.i * op2.i);
     i = (op1.i * op2.r - op1.r * op2.i) / (op2.r * op2.r + op2.i * op2.i);
 }
-//ÏÂÚÓ‰ ÔÂÂ‚Ó‰‡ ‚ Ï‡ÒÒË‚ char
+//√¨√•√≤√Æ√§ √Ø√•√∞√•√¢√Æ√§√† √¢ √¨√†√±√±√®√¢ char
 char* Complex::toString()
 {
-    st = new char[10];
+    st = new char[15];
+    sprintf_s(st,15,"%d+%di",r,i);
     char* ch = st;
-    int k = 0, d, i1 = 0;
-    d = r;
-    for (; d != 0; k++)
-    {
-        d = d / 10;
-    }
-    d = r;
-    if (r > 0)
-    {
-        k--;
-        i1 = k;
-    }
-    if (r < 0)
-    {
-        i1 = k;
-        st[0] = '-';
-    }
-    for (; d != 0; k--)
-    {
-        st[k] = abs(d % 10) + '0';
-        d = d / 10;
-    }
-    i1++;
-    if (i > 0)
-        st[i1] = '+';
-    else
-        st[i1] = '-';
-    d = i;
-    k = 0;
-    for (; d > 0; k++)
-    {
-        d = d / 10;
-    }
-    d = i;
-    i1 += k;
-    for (int i2 = i1; d > 0; i2--)
-    {
-        st[i2] = d % 10 + '0';
-        d = d / 10;
-    }
-    i1++;
-    st[i1] = 'i';
-    i1++;
-    st[i1] = '\0';
     return ch;
 }
 bool testAdd(Complex a, Complex b, Complex r)
