@@ -1,26 +1,25 @@
 #pragma once
 #include <stdio.h>
 using namespace std;
-// îïðåäåëåíèå êëàññà êîìïëåêñíûõ ÷èñåë
+// определение класса комплексных чисел
 class Complex {
 public:
     Complex();
-    Complex(int rl, int im);//êîíñòðóêòîð ñ ïàðàìåòðàìè
-    Complex(const Complex& other);// Êîíñòðóêòîð êîïèðîâàíèÿ
-    void Add(Complex x, Complex y);  // Ñëîæèòü êîìïëåêñíûûå ÷èñëà
-    void Sub(Complex x, Complex y);  // âû÷åñòü êîìïëåêñíûå ÷èñëà
-    void Multi(Complex x, Complex y); // óìíîæåíèå êîìïëåêñíûõ ÷èñåë
-    void Div(Complex x, Complex y); // Äåëåíèå êîìïëåêñíûõ ÷èñ
-    char* toString(); //ïåðåâîä â ñòðîêó
-    int getr() { return r; }
-    int geti() { return i; }
-    int getID() { c_id = c++;  return c_id; }//ïîëó÷åíèå íîìåðà îáúåêòà êëàññà
-    ~Complex(); //Äåñòðóêòîð
+    Complex(int rl, int im);//конструктор с параметрами
+    Complex(const Complex& other);// Конструктор копирования
+    void Add(Complex x, Complex y);  // Сложить комплексныые числа
+    void Sub(Complex x, Complex y);  // вычесть комплексные числа
+    void Multi(Complex x, Complex y); // умножение комплексных чисел
+    void Div(Complex x, Complex y); // Деление комплексных чис
+    char* toString(); //перевод в строку
+    int getR();
+    int getI();
+    int getID() { c_id = c++;  return c_id; }//получение номера объекта класса
+    ~Complex(); //Деструктор
 private:
-    int r;  // âåùåñòâåííàÿ ÷àñòü
-    int i;  // ìíèìàÿ ÷àñòü
-    char* st; //ñòðîêîâîå ïðåäñòàâëåíèå
+    int r;  // вещественная часть
+    int i;  // мнимая часть
+    char* st; //строковое представление
     static int c;
     int c_id;
 };
-
