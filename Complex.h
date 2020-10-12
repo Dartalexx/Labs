@@ -14,7 +14,7 @@ public:
     char* toString(); //перевод в строку
     int getR();
     int getI();
-    int getID();//получение номера объекта класса
+    int getID();//получение количества объектов класса
     ~Complex(); //Деструктор
 private:
     int r;  // вещественная часть
