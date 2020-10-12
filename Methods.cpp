@@ -1,5 +1,26 @@
-#include "Ëàáà3.1.1.h";
+#include "Complex.h";
 #include <iostream>
+ Complex:: Complex()
+    {
+        i = 0;
+        r = 0;
+    }
+   Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðàìè
+    {
+        st = new char[10];
+        r = rl;
+        i = im;
+        for (int i1 = 0; i1 < 10; i1++)
+            st[i1] ='0';
+    }
+    Complex:: Complex(const Complex& other)// Êîíñòðóêòîð êîïèðîâàíèÿ
+    {
+        st = new char[10];
+        r = other.r;
+        i = other.i;
+        for (int i1 = 0; i1 < 10; i1++)
+            st[i1] = other.st[i1];
+    }
 Complex::~Complex()
 {
     delete[] st;
