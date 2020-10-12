@@ -95,4 +95,5 @@ bool testDiv(Complex a, Complex b, Complex r)
 }
 int Complex:: getR() { return r; }
 int Complex:: getI() { return i; }
+int Complex:: getID() { c_id = c++;  return c_id; }
 int Complex::c = 1;
