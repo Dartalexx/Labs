@@ -1,53 +1,53 @@
 #include "Complex.h";
 #include <iostream>
- Complex:: Complex()
-    {
-        i = 0;
-        r = 0;
-    }
-   Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðàìè
-    {
-        st = new char[10];
-        r = rl;
-        i = im;
-        for (int i1 = 0; i1 < 10; i1++)
-            st[i1] ='0';
-    }
-    Complex:: Complex(const Complex& other)// Êîíñòðóêòîð êîïèðîâàíèÿ
-    {
-        st = new char[10];
-        r = other.r;
-        i = other.i;
-        for (int i1 = 0; i1 < 10; i1++)
-            st[i1] = other.st[i1];
-    }
 Complex::~Complex()
 {
     delete[] st;
 }
-// ìåòîä ñëîæåíèÿ
+Complex::Complex()
+{
+    i = 0;
+    r = 0;
+}
+Complex:: Complex(int rl, int im)//конструктор с параметрами
+{
+    st = new char[10];
+    r = rl;
+    i = im;
+    for (int i1 = 0; i1 < 10; i1++)
+        st[i1] = '0';
+}
+Complex:: Complex(const Complex& other)// Конструктор копирования
+{
+    st = new char[10];
+    r = other.r;
+    i = other.i;
+    for (int i1 = 0; i1 < 10; i1++)
+        st[i1] = other.st[i1];
+}
+// метод сложения
 void Complex::Add(Complex op1, Complex op2) {
     r = op1.r + op2.r;
     i = op1.i + op2.i;
 }
-//ìåòîä âû÷èòàíèÿ
+//метод вычитания
 void Complex::Sub(Complex op1, Complex op2) {
     r = op1.r - op2.r;
     i = op1.i - op2.i;
 }
-//ìåòîä óìíîæåíèÿ
+//метод умножения
 void Complex::Multi(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r - op1.i * op2.i);
     i = (op1.i * op2.r + op1.r * op2.i);
 }
-//ìåòîä äåëåíèÿ
+//метод деления
 void Complex::Div(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r + op1.i * op2.i) / (op2.r * op2.r + op2.i * op2.i);
     i = (op1.i * op2.r - op1.r * op2.i) / (op2.r * op2.r + op2.i * op2.i);
 }
-//ìåòîä ïåðåâîäà â ìàññèâ char
+//метод перевода в массив char
 char* Complex::toString()
 {
     st = new char[15];
@@ -58,7 +58,7 @@ char* Complex::toString()
 bool testAdd(Complex a, Complex b, Complex r)
 {
     r.Add(a, b);
-    if ((r.getr() == a.getr() + b.getr()) && (r.geti() == a.geti() + b.geti()))
+    if ((r.getR() == a.getR() + b.getR()) && (r.getI() == a.getI() + b.getI()))
     {
         return true;
     }
@@ -68,7 +68,7 @@ bool testAdd(Complex a, Complex b, Complex r)
 bool testSub(Complex a, Complex b, Complex r)
 {
     r.Sub(a, b);
-    if ((r.getr() == a.getr() - b.getr()) && (r.geti() == a.geti() - b.geti()))
+    if ((r.getR() == a.getR() - b.getR()) && (r.getI() == a.getI() - b.getI()))
     {
         return true;
     }
@@ -78,7 +78,7 @@ bool testSub(Complex a, Complex b, Complex r)
 bool testMulti(Complex a, Complex b, Complex r)
 {
     r.Multi(a, b);
-    if ((r.getr() == (a.getr() * b.getr() - a.geti() * b.geti())) && (r.geti() == (a.geti() * b.getr() + a.getr() * b.geti())))
+    if ((r.getR() == (a.getR() * b.getR() - a.getI() * b.getI())) && (r.getI() == (a.getI() * b.getR() + a.getR() * b.getI())))
     {
         return true;
     }
@@ -87,10 +87,12 @@ bool testMulti(Complex a, Complex b, Complex r)
 bool testDiv(Complex a, Complex b, Complex r)
 {
     r.Div(a, b);
-    if ((r.getr() == (a.getr() * b.getr() + a.geti() * b.geti()) / (b.getr() * b.getr() + b.geti() * b.geti())) && (r.geti() == (a.geti() * b.getr() - a.getr() * b.geti()) / (b.getr() * b.getr() + b.geti() * b.geti())))
+    if ((r.getR() == (a.getR() * b.getR() + a.getI() * b.getI()) / (b.getR() * b.getR() + b.getI() * b.getI())) && (r.getI() == (a.getI() * b.getR() - a.getR() * b.getI()) / (b.getR() * b.getR() + b.getI() * b.getI())))
     {
         return true;
     }
     else return false;
 }
+int Complex:: getR() { return r; }
+int Complex:: getI() { return i; }
 int Complex::c = 1;
