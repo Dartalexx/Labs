@@ -14,7 +14,7 @@ public:
     char* toString(); //перевод в строку
     int getR();
     int getI();
-    int getID() { c_id = c++;  return c_id; }//получение номера объекта класса
+    int getID();//получение номера объекта класса
     ~Complex(); //Деструктор
 private:
     int r;  // вещественная часть
