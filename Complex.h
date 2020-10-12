@@ -4,27 +4,9 @@ using namespace std;
 // îïðåäåëåíèå êëàññà êîìïëåêñíûõ ÷èñåë
 class Complex {
 public:
-    Complex()
-    {
-        i = 0;
-        r = 0;
-    }
-    Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðàìè
-    {
-        st = new char[10];
-        r = rl;
-        i = im;
-        for (int i1 = 0; i1 < 10; i1++)
-            st[i1] ='0';
-    }
-    Complex(const Complex& other)// Êîíñòðóêòîð êîïèðîâàíèÿ
-    {
-        st = new char[10];
-        r = other.r;
-        i = other.i;
-        for (int i1 = 0; i1 < 10; i1++)
-            st[i1] = other.st[i1];
-    }
+    Complex();
+    Complex(int rl, int im);//êîíñòðóêòîð ñ ïàðàìåòðàìè
+    Complex(const Complex& other);// Êîíñòðóêòîð êîïèðîâàíèÿ
     void Add(Complex x, Complex y);  // Ñëîæèòü êîìïëåêñíûûå ÷èñëà
     void Sub(Complex x, Complex y);  // âû÷åñòü êîìïëåêñíûå ÷èñëà
     void Multi(Complex x, Complex y); // óìíîæåíèå êîìïëåêñíûõ ÷èñåë
