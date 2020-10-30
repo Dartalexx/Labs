@@ -28,22 +28,6 @@ const Complex& Complex:: operator = (const Complex &other) // ïåðåãðóçê
     toString();
     return (*this);
 }
-// ìåòîä ñëîæåíèÿ
-void Complex::Add(Complex op1, Complex op2) {
-    r = op1.r + op2.r;
-    i = op1.i + op2.i;
-}
-//ìåòîä âû÷èòàíèÿ
-void Complex::Sub(Complex op1, Complex op2) {
-    r = op1.r - op2.r;
-    i = op1.i - op2.i;
-}
-//ìåòîä óìíîæåíèÿ
-void Complex::Multi(Complex op1, Complex op2)
-{
-    r = (op1.r * op2.r - op1.i * op2.i);
-    i = (op1.i * op2.r + op1.r * op2.i);
-}
 //îïåðàòîð óìíîæåíèÿ
 Complex Complex:: operator * (Complex& other) {
     Complex temp;
@@ -51,13 +35,6 @@ Complex Complex:: operator * (Complex& other) {
     temp.i = (i * other.r + r * other.i);
     return temp;
 }
-//ìåòîä äåëåíèÿ
-void Complex::Div(Complex op1, Complex op2)
-{
-    r = (op1.r * op2.r + op1.i * op2.i) / (op2.r * op2.r + op2.i * op2.i);
-    i = (op1.i * op2.r - op1.r * op2.i) / (op2.r * op2.r + op2.i * op2.i);
-}
-//îïåðàòîð äåëåíèÿ
 Complex Complex:: operator / (Complex& other) // ïåðåãðóçêà îïåðàòîðà äåëåíèÿ
 {
     Complex temp;
