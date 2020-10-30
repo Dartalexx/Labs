@@ -1,32 +1,28 @@
 #pragma once
 #include <stdio.h>
 using namespace std;
-// определение класса комплексных чисел
+// Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГЄГ«Г Г±Г±Г  ГЄГ®Г¬ГЇГ«ГҐГЄГ±Г­Г»Гµ Г·ГЁГ±ГҐГ«
 class Complex {
 public:
     Complex();
-    Complex(int rl, int im);//конструктор с параметрами
-    const Complex& operator = (const Complex& other); // перегрузка оператора присваивания
-    void Add(Complex x, Complex y);  // Сложить комплексные числа
-    void Sub(Complex x, Complex y);  // вычесть комплексные числа
-    void Multi(Complex x, Complex y); // умножение комплексных чисел
-    void Div(Complex x, Complex y); // деление комплексных чисел
-    Complex operator * (Complex& other); // перегрузка оператора умножения
-    Complex operator / (Complex& other); // перегрузка оператора деления
+    Complex(int rl, int im);//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г± ГЇГ Г°Г Г¬ГҐГІГ°Г Г¬ГЁ
+    const Complex& operator = (const Complex& other); // ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г®ГЇГҐГ°Г ГІГ®Г°Г  ГЇГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГї
+    Complex operator * (Complex& other); // ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г®ГЇГҐГ°Г ГІГ®Г°Г  ГіГ¬Г­Г®Г¦ГҐГ­ГЁГї
+    Complex operator / (Complex& other); // ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г®ГЇГҐГ°Г ГІГ®Г°Г  Г¤ГҐГ«ГҐГ­ГЁГї
     friend bool  operator < (const Complex& o, const Complex& o1);
     friend bool  operator > (const Complex& o, const Complex& o1);
     bool operator == (const Complex& o) const;
-    float abs(int x, int y); // Модуль комплексного числа
-    char* toString(); //перевод в строку
+    float abs(int x, int y); // ГЊГ®Г¤ГіГ«Гј ГЄГ®Г¬ГЇГ«ГҐГЄГ±Г­Г®ГЈГ® Г·ГЁГ±Г«Г 
+    char* toString(); //ГЇГҐГ°ГҐГўГ®Г¤ Гў Г±ГІГ°Г®ГЄГі
     char* toTrig();
     int getR();
     int getI();
-    int getID();//получение номера объекта класса
-    ~Complex(); //Деструктор
+    int getID();//ГЇГ®Г«ГіГ·ГҐГ­ГЁГҐ Г­Г®Г¬ГҐГ°Г  Г®ГЎГєГҐГЄГІГ  ГЄГ«Г Г±Г±Г 
+    ~Complex(); //Г„ГҐГ±ГІГ°ГіГЄГІГ®Г°
 private:
-    int r;  // вещественная часть
-    int i;  // мнимая часть
-    char* st; //строковое представление
+    int r;  // ГўГҐГ№ГҐГ±ГІГўГҐГ­Г­Г Гї Г·Г Г±ГІГј
+    int i;  // Г¬Г­ГЁГ¬Г Гї Г·Г Г±ГІГј
+    char* st; //Г±ГІГ°Г®ГЄГ®ГўГ®ГҐ ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГҐГ­ГЁГҐ
     static int c;
     int c_id;
 };
