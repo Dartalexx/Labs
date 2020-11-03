@@ -98,24 +98,6 @@ char* Complex::toTrig()
     sprintf_s(tr, 49, "%1.2f(cos(%1.2f)+sin(%1.2f)i)",ab, f,f);
     return tr;
 }
-bool testMulti(Complex a, Complex b, Complex t)
-{
-    t = a * b;
-    if ((t.getR() == (a.getR() * b.getR() - a.getI() * b.getI())) && (t.getI() == (a.getI() * b.getR() + a.getR() * b.getI())))
-    {
-        return true;
-    }
-    else return false;
-}
-bool testDiv(Complex a, Complex b, Complex t)
-{
-    t=a/b;
-    if ((t.getR() == (a.getR() * b.getR() + a.getI() * b.getI()) / (b.getR() * b.getR() + b.getI() * b.getI())) && (t.getI() == (a.getI() * b.getR() - a.getR() * b.getI()) / (b.getR() * b.getR() + b.getI() * b.getI())))
-    {
-        return true;
-    }
-    else return false;
-}
 bool Complex:: operator == (const Complex& o) const
 {
     return (r == o.r && i == o.i);
@@ -130,23 +112,6 @@ bool  operator > (const Complex& o, const Complex& o1)
 }
 int Complex:: getR() { return r; }
 int Complex:: getI() { return i; }
-bool testEqual(Complex a, Complex b)
-{
-    if ((a == b) == ((a.getI() == b.getI()) && (a.getR() == b.getR())))
-        return true;
-    else return false;
-}
-bool testLSign(Complex a, Complex b)
-{
-    if ((a < b) == ((a.getI() < b.getI()) && (a.getR() < b.getR())))
-        return true;
-    else return false;
-}
-bool testMSign(Complex a, Complex b)
-{
-    if ((a > b) == ((a.getI() > b.getI()) && (a.getR() > b.getR())))
-        return true;
-    else return false;
-}
+
 int Complex:: getID() { c_id = c++;  return c_id; }//получение номера объекта класса
 int Complex::c = 1;
