@@ -3,7 +3,7 @@
 #include <cmath>
 Complex::~Complex()
 {
-
+    delete[] st;
 }
 Complex::Complex()
 {
@@ -13,7 +13,7 @@ Complex::Complex()
     for (int i1 = 0; i1 < 10; i1++)
         st[i1] = '0';
 }
-Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðàìè
+Complex:: Complex(int rl, int im)//конструктор с параметрами
 {
     st = new char[10];
     r = rl;
@@ -21,34 +21,65 @@ Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðà�
     for (int i1 = 0; i1 < 10; i1++)
         st[i1] = '0';
 }
-const Complex& Complex:: operator = (const Complex &other) // ïåðåãðóçêà îïåðàòîðà ïðèñâàèâàíèÿ
+Complex::Complex(const Complex& other)// Конструктор копирования
+{
+    st = new char[10];
+    r = other.r;
+    i = other.i;
+    for (int i1 = 0; i1 < 10; i1++)
+        st[i1] = other.st[i1];
+}
+const Complex& Complex:: operator = (const Complex &other) // перегрузка оператора присваивания
 {
     r = other.r;
     i = other.i;
     toString();
     return (*this);
 }
-//îïåðàòîð óìíîæåíèÿ
+// метод сложения
+void Complex::Add(Complex op1, Complex op2) {
+    r = op1.r + op2.r;
+    i = op1.i + op2.i;
+}
+//метод вычитания
+void Complex::Sub(Complex op1, Complex op2) {
+    r = op1.r - op2.r;
+    i = op1.i - op2.i;
+}
+//метод умножения
+void Complex::Multi(Complex op1, Complex op2)
+{
+    r = (op1.r * op2.r - op1.i * op2.i);
+    i = (op1.i * op2.r + op1.r * op2.i);
+}
+//оператор умножения
 Complex Complex:: operator * (Complex& other) {
     Complex temp;
     temp.r = (r * other.r - i * other.i);
     temp.i = (i * other.r + r * other.i);
     return temp;
 }
-Complex Complex:: operator / (Complex& other) // ïåðåãðóçêà îïåðàòîðà äåëåíèÿ
+//метод деления
+void Complex::Div(Complex op1, Complex op2)
+{
+    r = (op1.r * op2.r + op1.i * op2.i) / (op2.r * op2.r + op2.i * op2.i);
+    i = (op1.i * op2.r - op1.r * op2.i) / (op2.r * op2.r + op2.i * op2.i);
+}
+//оператор деления
+Complex Complex:: operator / (Complex& other) // перегрузка оператора деления
 {
     Complex temp;
     temp.r = (r * other.r + i * other.i) / (other.r * other.r + other.i * other.i);
     temp.i = (i * other.r - r * other.i) / (other.r * other.r + other.i * other.i);
     return temp;
 }
-float Complex:: abs(int r, int i) // Ìîäóëü êîìïëåêñíîãî ÷èñëà
+float Complex:: abs(int r, int i) // Модуль комплексного числа
 {
     float b;
     b = sqrt(r * r + i * i);
     return b;
 }
-//ìåòîä ïåðåâîäà â ìàññèâ char
+//метод перевода в массив char
 char* Complex::toString()
 {
     st = new char[15];
@@ -117,5 +148,5 @@ bool testMSign(Complex a, Complex b)
         return true;
     else return false;
 }
-int Complex:: getID() { c_id = c++;  return c_id; }//ïîëó÷åíèå íîìåðà îáúåêòà êëàññà
+int Complex:: getID() { c_id = c++;  return c_id; }//получение номера объекта класса
 int Complex::c = 1;
