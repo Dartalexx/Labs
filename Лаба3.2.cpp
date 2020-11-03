@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <conio.h>
 #include "Complex.h";
 bool testMulti(Complex a, Complex b, Complex r);
