@@ -1,11 +1,7 @@
 #include <iostream>
 #include <conio.h>
 #include "Complex.h";
-bool testMulti(Complex a, Complex b, Complex r);
-bool testDiv(Complex a, Complex b, Complex r);
-bool testEqual(Complex a,Complex b);
-bool testLSign(Complex a, Complex b);
-bool testMSign(Complex a, Complex b);
+#include "Tests.h";
 int main()
 {
     Complex num1(2, 8);  // первый объект класса Complex
