@@ -11,7 +11,7 @@ Complex::Complex()
     for (int i1 = 0; i1 < 10; i1++)
         st[i1] = '0';
 }
-Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðàìè
+Complex:: Complex(int rl, int im)//ÃªÃ®Ã­Ã±Ã²Ã°Ã³ÃªÃ²Ã®Ã° Ã± Ã¯Ã Ã°Ã Ã¬Ã¥Ã²Ã°Ã Ã¬Ã¨
 {
     st = new char[10];
     r = rl;
@@ -19,7 +19,7 @@ Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðàìè
     for (int i1 = 0; i1 < 10; i1++)
         st[i1] = '0';
 }
-Complex::Complex(const Complex& other)// Êîíñòðóêòîð êîïèðîâàíèÿ
+Complex::Complex(const Complex& other)// ÃŠÃ®Ã­Ã±Ã²Ã°Ã³ÃªÃ²Ã®Ã° ÃªÃ®Ã¯Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¿
 {
     st = new char[10];
     r = other.r;
@@ -29,58 +29,58 @@ Complex::Complex(const Complex& other)// Êîíñòðóêòîð êîïèðîâàíèÿ
 }
 int Complex::getR() { return r; }
 int Complex::getI() { return i; }
-int Complex::getID() { c_id = c++;  return c_id; }//ïîëó÷åíèå íîìåðà îáúåêòà êëàññà
-const Complex& Complex:: operator = (const Complex &other) // ïåðåãðóçêà îïåðàòîðà ïðèñâàèâàíèÿ
+int Complex::getID() { c_id = c++;  return c_id; }//Ã¯Ã®Ã«Ã³Ã·Ã¥Ã­Ã¨Ã¥ Ã­Ã®Ã¬Ã¥Ã°Ã  Ã®Ã¡ÃºÃ¥ÃªÃ²Ã  ÃªÃ«Ã Ã±Ã±Ã 
+const Complex& Complex:: operator = (const Complex &other) // Ã¯Ã¥Ã°Ã¥Ã£Ã°Ã³Ã§ÃªÃ  Ã®Ã¯Ã¥Ã°Ã Ã²Ã®Ã°Ã  Ã¯Ã°Ã¨Ã±Ã¢Ã Ã¨Ã¢Ã Ã­Ã¨Ã¿
 {
     r = other.r;
     i = other.i;
     toString();
     return (*this);
 }
-// ìåòîä ñëîæåíèÿ
+// Ã¬Ã¥Ã²Ã®Ã¤ Ã±Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¿
 void Complex::Add(Complex op1, Complex op2) {
     r = op1.r + op2.r;
     i = op1.i + op2.i;
 }
-//ìåòîä âû÷èòàíèÿ
+//Ã¬Ã¥Ã²Ã®Ã¤ Ã¢Ã»Ã·Ã¨Ã²Ã Ã­Ã¨Ã¿
 void Complex::Sub(Complex op1, Complex op2) {
     r = op1.r - op2.r;
     i = op1.i - op2.i;
 }
-//ìåòîä óìíîæåíèÿ
+//Ã¬Ã¥Ã²Ã®Ã¤ Ã³Ã¬Ã­Ã®Ã¦Ã¥Ã­Ã¨Ã¿
 void Complex::Multi(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r - op1.i * op2.i);
     i = (op1.i * op2.r + op1.r * op2.i);
 }
-//îïåðàòîð óìíîæåíèÿ
+//Ã®Ã¯Ã¥Ã°Ã Ã²Ã®Ã° Ã³Ã¬Ã­Ã®Ã¦Ã¥Ã­Ã¨Ã¿
 Complex Complex:: operator * (Complex& other) {
     Complex temp;
     temp.r = (r * other.r - i * other.i);
     temp.i = (i * other.r + r * other.i);
     return temp;
 }
-//ìåòîä äåëåíèÿ
+//Ã¬Ã¥Ã²Ã®Ã¤ Ã¤Ã¥Ã«Ã¥Ã­Ã¨Ã¿
 void Complex::Div(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r + op1.i * op2.i) / (op2.r * op2.r + op2.i * op2.i);
     i = (op1.i * op2.r - op1.r * op2.i) / (op2.r * op2.r + op2.i * op2.i);
 }
-//îïåðàòîð äåëåíèÿ
-Complex Complex:: operator / (Complex& other) // ïåðåãðóçêà îïåðàòîðà äåëåíèÿ
+//Ã®Ã¯Ã¥Ã°Ã Ã²Ã®Ã° Ã¤Ã¥Ã«Ã¥Ã­Ã¨Ã¿
+Complex Complex:: operator / (Complex& other) // Ã¯Ã¥Ã°Ã¥Ã£Ã°Ã³Ã§ÃªÃ  Ã®Ã¯Ã¥Ã°Ã Ã²Ã®Ã°Ã  Ã¤Ã¥Ã«Ã¥Ã­Ã¨Ã¿
 {
     Complex temp;
     temp.r = (r * other.r + i * other.i) / (other.r * other.r + other.i * other.i);
     temp.i = (i * other.r - r * other.i) / (other.r * other.r + other.i * other.i);
     return temp;
 }
-float Complex:: abs(int r, int i) // Ìîäóëü êîìïëåêñíîãî ÷èñëà
+float Complex:: abs(int r, int i) // ÃŒÃ®Ã¤Ã³Ã«Ã¼ ÃªÃ®Ã¬Ã¯Ã«Ã¥ÃªÃ±Ã­Ã®Ã£Ã® Ã·Ã¨Ã±Ã«Ã 
 {
     float b;
     b = sqrt(r * r + i * i);
     return b;
 }
-//ìåòîä ïåðåâîäà â ìàññèâ char
+//Ã¬Ã¥Ã²Ã®Ã¤ Ã¯Ã¥Ã°Ã¥Ã¢Ã®Ã¤Ã  Ã¢ Ã¬Ã Ã±Ã±Ã¨Ã¢ char
 char* Complex::toString()
 {
     st = new char[10];
@@ -99,7 +99,7 @@ char* Complex::toTrig()
     sprintf_s(tr, 49, "%1.2f(cos(%1.2f)+sin(%1.2f)i)",ab, f,f);
     return tr;
 }
-void Complex:: writef(ofstream& out)//çàïèñü îáúåêòà êëàññà â ôàéë
+void Complex:: writef(ofstream& out)//Ã§Ã Ã¯Ã¨Ã±Ã¼ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã  ÃªÃ«Ã Ã±Ã±Ã  Ã¢ Ã´Ã Ã©Ã«
 {
     toString();
     int k = 0;
