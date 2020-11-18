@@ -11,7 +11,7 @@ Complex::Complex()
     for (int i1 = 0; i1 < 10; i1++)
         st[i1] = '0';
 }
-Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðàìè
+Complex:: Complex(int rl, int im)//конструктор с параметрами
 {
     st = new char[10];
     r = rl;
@@ -19,7 +19,7 @@ Complex:: Complex(int rl, int im)//êîíñòðóêòîð ñ ïàðàìåòðà�
     for (int i1 = 0; i1 < 10; i1++)
         st[i1] = '0';
 }
-Complex::Complex(const Complex& other)// Êîíñòðóêòîð êîïèðîâàíèÿ
+Complex::Complex(const Complex& other)// Конструктор копирования
 {
     st = new char[10];
     r = other.r;
@@ -29,58 +29,58 @@ Complex::Complex(const Complex& other)// Êîíñòðóêòîð êîïèðîâà
 }
 int Complex::getR() { return r; }
 int Complex::getI() { return i; }
-int Complex::getID() { c_id = c++;  return c_id; }//ïîëó÷åíèå íîìåðà îáúåêòà êëàññà
-const Complex& Complex:: operator = (const Complex &other) // ïåðåãðóçêà îïåðàòîðà ïðèñâàèâàíèÿ
+int Complex::getID() { c_id = c++;  return c_id; }//получение номера объекта класса
+const Complex& Complex:: operator = (const Complex &other) // перегрузка оператора присваивания
 {
     r = other.r;
     i = other.i;
     toString();
     return (*this);
 }
-// ìåòîä ñëîæåíèÿ
+// метод сложения
 void Complex::Add(Complex op1, Complex op2) {
     r = op1.r + op2.r;
     i = op1.i + op2.i;
 }
-//ìåòîä âû÷èòàíèÿ
+//метод вычитания
 void Complex::Sub(Complex op1, Complex op2) {
     r = op1.r - op2.r;
     i = op1.i - op2.i;
 }
-//ìåòîä óìíîæåíèÿ
+//метод умножения
 void Complex::Multi(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r - op1.i * op2.i);
     i = (op1.i * op2.r + op1.r * op2.i);
 }
-//îïåðàòîð óìíîæåíèÿ
+//оператор умножения
 Complex Complex:: operator * (Complex& other) {
     Complex temp;
     temp.r = (r * other.r - i * other.i);
     temp.i = (i * other.r + r * other.i);
     return temp;
 }
-//ìåòîä äåëåíèÿ
+//метод деления
 void Complex::Div(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r + op1.i * op2.i) / (op2.r * op2.r + op2.i * op2.i);
     i = (op1.i * op2.r - op1.r * op2.i) / (op2.r * op2.r + op2.i * op2.i);
 }
-//îïåðàòîð äåëåíèÿ
-Complex Complex:: operator / (Complex& other) // ïåðåãðóçêà îïåðàòîðà äåëåíèÿ
+//оператор деления
+Complex Complex:: operator / (Complex& other) // перегрузка оператора деления
 {
     Complex temp;
     temp.r = (r * other.r + i * other.i) / (other.r * other.r + other.i * other.i);
     temp.i = (i * other.r - r * other.i) / (other.r * other.r + other.i * other.i);
     return temp;
 }
-float Complex:: abs(int r, int i) // Ìîäóëü êîìïëåêñíîãî ÷èñëà
+float Complex:: abs(int r, int i) // Модуль комплексного числа
 {
     float b;
     b = sqrt(r * r + i * i);
     return b;
 }
-//ìåòîä ïåðåâîäà â ìàññèâ char
+//метод перевода в массив char
 char* Complex::toString()
 {
     st = new char[10];
@@ -99,40 +99,18 @@ char* Complex::toTrig()
     sprintf_s(tr, 49, "%1.2f(cos(%1.2f)+sin(%1.2f)i)",ab, f,f);
     return tr;
 }
-void Complex:: writef(ofstream& out)//çàïèñü îáúåêòà êëàññà â ôàéë
+void Complex:: writef(ofstream& out)//запись объекта класса в файл
 {
-    toString();
-    int k = 0;
-    while (st[k]!='\n')
+    if (out.is_open())
     {
-        k++;
-    };
-    k++;
-    char* t = new char[k];
-    t = st;
-    out.write(t, sizeof(t)-2);
+        out.write((char*)&r, sizeof(r));
+        out.write((char*)&i, sizeof(i));
+    }
 };
 void Complex::readf(istream& in)
 {
-    char c[15];
-    char re[5];
-    char im[5];
-    in.read((char*)&c, sizeof(c));
-    int i2 = 0;
-    int i1 = 0;
-    while (((c[i2] != '-') || (i2 != 0)) && (c[i2] != '+'))
-    {
-        re[i2] = c[i2];
-        i2++;
-    }
-    r = atoi(re);
-    while (c[i2] != 'i')
-    {
-        im[i1] = c[i2];
-        i2++;
-        i1++;
-    }
-    i = atoi(im);
+    in.read((char*)&r, sizeof(r));
+    in.read((char*)&i, sizeof(i));
 };
 bool Complex:: operator == (const Complex& o) const
 {
