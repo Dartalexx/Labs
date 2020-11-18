@@ -35,7 +35,7 @@ bool testMSign(Complex a, Complex b)
         return true;
     else return false;
 }
-bool testText(Complex& a,Complex& b) //тест ввода/вывода в текстовый файл
+bool testText(Complex& a,Complex& b) //С‚РµСЃС‚ РІРІРѕРґР°/РІС‹РІРѕРґР° РІ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р»
 {
     cout << "Testing Text file: "<<endl;
     ofstream fout("D:\\file.txt");
@@ -59,10 +59,10 @@ bool testText(Complex& a,Complex& b) //тест ввода/вывода в текстовый файл
         return false;
     };
 };
-bool testBinary(Complex& a, Complex& b) //тест ввода/вывода в двоичный файл
+bool testBinary(Complex& a, Complex& b) //С‚РµСЃС‚ РІРІРѕРґР°/РІС‹РІРѕРґР° РІ РґРІРѕРёС‡РЅС‹Р№ С„Р°Р№Р»
 {
     cout << "Testing Binary file: " << endl;
-    ofstream fout("D:\\file1.dat", ios::binary || ios::app);
+    ofstream fout("D:\\file1.dat", ios::binary || ios::out);
     if (fout.is_open())
     {
         a.writef(fout);
