@@ -9,7 +9,7 @@ Complex::Complex()
     i = 0;
     r = 0;
 }
-Complex::Complex(int rl, int im)//конструктор с параметрами
+Complex::Complex(int rl, int im)//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г± ГЇГ Г°Г Г¬ГҐГІГ°Г Г¬ГЁ
 {
     st = new char[10];
     r = rl;
@@ -17,35 +17,35 @@ Complex::Complex(int rl, int im)//конструктор с параметрами
     for (int i1 = 0; i1 < 10; i1++)
         st[i1] = '0';
 }
-Complex::Complex(const Complex& other)// Конструктор копирования
+Complex::Complex(const Complex& other)// ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГї
 {
     r = other.r;
     i = other.i;
     toString();
 }
-// метод сложения
+// Г¬ГҐГІГ®Г¤ Г±Г«Г®Г¦ГҐГ­ГЁГї
 void Complex::Add(Complex op1, Complex op2) {
     r = op1.r + op2.r;
     i = op1.i + op2.i;
 }
-//метод вычитания
+//Г¬ГҐГІГ®Г¤ ГўГ»Г·ГЁГІГ Г­ГЁГї
 void Complex::Sub(Complex op1, Complex op2) {
     r = op1.r - op2.r;
     i = op1.i - op2.i;
 }
-//метод умножения
+//Г¬ГҐГІГ®Г¤ ГіГ¬Г­Г®Г¦ГҐГ­ГЁГї
 void Complex::Multi(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r - op1.i * op2.i);
     i = (op1.i * op2.r + op1.r * op2.i);
 }
-//метод деления
+//Г¬ГҐГІГ®Г¤ Г¤ГҐГ«ГҐГ­ГЁГї
 void Complex::Div(Complex op1, Complex op2)
 {
     r = (op1.r * op2.r + op1.i * op2.i) / (op2.r * op2.r + op2.i * op2.i);
     i = (op1.i * op2.r - op1.r * op2.i) / (op2.r * op2.r + op2.i * op2.i);
 }
-//метод перевода в массив char
+//Г¬ГҐГІГ®Г¤ ГЇГҐГ°ГҐГўГ®Г¤Г  Гў Г¬Г Г±Г±ГЁГў char
 char* Complex::toString()
 {
     st = new char[15];
